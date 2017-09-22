@@ -1,1 +1,72 @@
-  Marcell D'Avis (* 25. Juni 1941 in Warszawa bei Warschau, Polen) ist ein von Interpol wegen Hausierens und illegalen Verkaufs von Indernett-Modems an böse Inder oder Nichtinder gesuchter Leiter für Kundenzufriedenheit. Bekanntheit erlangte er auch durch seine einmalig egozentrischen Werbespots für 1&1.
+<html>
+
+<head>
+  <title>Email</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css" />
+  <script>
+  var mail;
+    function HalloWelt() {
+      swal({
+        title: 'Bitte geben sie ihre Email ein:',
+        input: 'email',
+        showCancelButton: true,
+        confirmButtonText: 'Senden',
+        showLoaderOnConfirm: true,
+        preConfirm: function (email) {
+          return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+              if (email === 'taken@example.com') {
+                reject('This email is already taken.')
+              } else {
+                resolve()
+              }
+            }, 2000)
+          })
+        },
+        allowOutsideClick: false
+      }).then(function (email) {
+        swal({
+          type: 'success',
+          title: 'Gratuliere! Ihre Email wurde gespeichert!',
+          html: 'Erteilte Email: ' + email
+        })
+        mail = email;
+      })
+      var knopf = document.getElementById('knopf');
+      knopf.innerHTML = "Email wurde erteilt!";
+    }
+    function pass() {
+      swal({
+        title: "Bitte geben sie das passwort zu der Email:" + mail,
+        input: "password",
+        showCancelButton: true,
+        confirmButtonText: 'Senden',
+        showLoaderOnConfirm: true,
+      }).then(function () {
+        swal({
+          type: 'success',
+          title: 'Gratuliere! Ihr Passwort wurde gespeichert!',
+        }).then(function (){
+          window.location.href = "error.html";
+        })
+      })
+    }
+  </script>
+
+</head>
+
+<body>
+  <h3>Hallo</h3>
+  <p>Das ist eine Betaversion eines Emaildinstes.</p>
+
+  <div style="border-style: glass">
+    <p id="knopf"></p>
+    <input type="button" name="" value="Email erteilen!" onclick="HalloWelt()" >
+    <input type="button" name="" value="Passwort Hinterlassen!" onclick="pass()" >
+
+  </div>
+
+</body>
+
+</html>
